@@ -1,0 +1,30 @@
+{
+  "short_name": "萌萌口算",
+  "name": "萌萌口算 - 儿童趣味数学口算训练",
+  "description": "适合8岁儿童的极简、轻快、马卡龙和粉嫩色系配色口算训练器。",
+  "icons": [
+    {
+      "src": "/mengmeng_app_icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/mengmeng_app_icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/mengmeng_app_icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#FFF0F2",
+  "theme_color": "#FFA5B6",
+  "display": "standalone",
+  "orientation": "portrait"
+}

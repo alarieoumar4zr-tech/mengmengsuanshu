@@ -1,9 +1,62 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>萌萌口算 - 儿童趣味数学</title>
+    
+    <!-- PWA & Mobile Home-screen Optimization -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#FFA5B6" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="萌萌口算" />
+    
+    <!-- Base Crispy SVG Vector Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/mengmeng_app_icon.svg" />
+    
+    <!-- Dynamic client-side PNG generator for perfect iOS "Add to Home Screen" & legacy compatibility -->
+    <script>
+      (function() {
+        const svgIconUrl = "/mengmeng_app_icon.svg";
+        const img = new Image();
+        img.src = svgIconUrl;
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          canvas.width = 192;
+          canvas.height = 192;
+          const ctx = canvas.getContext('2d');
+          if (ctx) {
+            ctx.drawImage(img, 0, 0, 192, 192);
+            try {
+              const dataUrl = canvas.toDataURL('image/png');
+              
+              // Update/Create Apple Touch Icon link
+              let appleLink = document.querySelector('link[rel="apple-touch-icon"]');
+              if (!appleLink) {
+                appleLink = document.createElement('link');
+                appleLink.rel = 'apple-touch-icon';
+                document.head.appendChild(appleLink);
+              }
+              appleLink.href = dataUrl;
+              
+              // Update/Create high-res PNG shortcut favicon
+              let pngLink = document.querySelector('link[rel="icon"][sizes="192x192"]');
+              if (!pngLink) {
+                pngLink = document.createElement('link');
+                pngLink.rel = 'icon';
+                pngLink.type = 'image/png';
+                pngLink.setAttribute('sizes', '192x192');
+                document.head.appendChild(pngLink);
+              }
+              pngLink.href = dataUrl;
+            } catch (e) {
+              console.warn('PNG generation failed, native SVG placeholder in use.', e);
+            }
+          }
+        };
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
