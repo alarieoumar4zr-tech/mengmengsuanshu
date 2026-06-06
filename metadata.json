@@ -1,0 +1,6 @@
+{
+  "name": "萌萌口算",
+  "description": "适合8岁儿童的极简、轻快、马卡龙和粉嫩色系配色口算训练器。含有100以内的加减法，可爱的选项按钮，答题正确提示太棒了，错误触发趣味震动效果。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-fredoka: "Fredoka", "Noto Sans SC", "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-fredoka);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Custom keyframes for children interface if needed, but motion package is excellent for this! */

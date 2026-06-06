@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/explain",
+      "destination": "/api/explain.ts"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
