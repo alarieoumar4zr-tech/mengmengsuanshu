@@ -88,7 +88,36 @@ export default function WrongBookModal({
     const cleanText = text.replace(/[\u2000-\u3000\ud83c\ud83d\ud83e\udfff]/g, '');
     const utterance = new SpeechSynthesisUtterance(cleanText);
     utterance.lang = 'zh-CN';
-    utterance.rate = 1.05; // slightly faster and cheerful
+    
+    // Play with gentle, conversational pacing perfect for an 8yo child
+    utterance.rate = 0.95; 
+    
+    // Set pitch slightly higher (1.20) to sound super sweet, adorable and full of cartoon teddy bear warmth
+    utterance.pitch = 1.2;
+
+    // Dynamically query available voices to find a natural Chinese speaker
+    try {
+      const voices = window.speechSynthesis.getVoices();
+      const zhVoices = voices.filter(v => v.lang.startsWith('zh') || v.lang.startsWith('ZH'));
+      
+      if (zhVoices.length > 0) {
+        // High-quality natural-sounding Chinese voice checklist
+        let selectedVoice = zhVoices.find(v => v.name.toLowerCase().includes('xiaoxiao'));
+        if (!selectedVoice) selectedVoice = zhVoices.find(v => v.name.toLowerCase().includes('tingting') || v.name.toLowerCase().includes('ting-ting'));
+        if (!selectedVoice) selectedVoice = zhVoices.find(v => v.name.toLowerCase().includes('meijia') || v.name.toLowerCase().includes('mei-jia'));
+        if (!selectedVoice) selectedVoice = zhVoices.find(v => v.name.toLowerCase().includes('xiaoyi'));
+        if (!selectedVoice) selectedVoice = zhVoices.find(v => v.name.toLowerCase().includes('yaoyao'));
+        if (!selectedVoice) selectedVoice = zhVoices.find(v => v.name.toLowerCase().includes('huihui'));
+        if (!selectedVoice) selectedVoice = zhVoices.find(v => v.name.toLowerCase().includes('google'));
+        if (!selectedVoice) selectedVoice = zhVoices[0]; // fallback
+        
+        if (selectedVoice) {
+          utterance.voice = selectedVoice;
+        }
+      }
+    } catch (e) {
+      console.warn('Speech synthesis voice retrieval error:', e);
+    }
 
     utterance.onend = () => {
       setSpeakingId(null);
